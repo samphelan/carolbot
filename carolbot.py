@@ -11,14 +11,14 @@ api = tweepy.API(auth)
 public_tweets = api.home_timeline()
 
 carol = api.get_user('trashbagstern')
-carol_timeline = api.user_timeline('trashbagstern', count=1000, page=6)
+carol_timeline = api.user_timeline('trashbagstern', count=1000, page=3)
 
 
 def deEmojify(inputString):
     return inputString.encode('ascii', 'ignore').decode('ascii')
 
 
-with open('caroltweets.csv', 'a') as f:
+with open('caroltweets2.csv', 'a') as f:
     writer = csv.writer(f, delimiter='|')
     for tweet in carol_timeline:
         if(tweet.is_quote_status == False and tweet.in_reply_to_status_id == None and tweet.text[0:2] != 'RT'):
